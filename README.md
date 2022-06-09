@@ -3,8 +3,8 @@ GUI library and framework for Node.js
 
 ## Getting Started
 ```js
-const { Rectangle, Window } = require('izagi');
-const { Color, Vector2D } = require('izagi');
+const { Rectangle, Window } = require('sul');
+const { Color, Vector2D } = require('sul');
 
 const WINDOW_WIDTH = 400;
 const WINDOW_HEIGHT = 400;
@@ -19,4 +19,13 @@ rect.position = new Vector2D(100, 100);
 rect.fill = new Color(0, 0, 0);
 
 win.add_child(rect);
+```
+
+## How to Build
+```sh
+npm install
+# Build .js files
+npm run build
+# Build .d.ts files
+npm run build.declaration
 ```
