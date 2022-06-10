@@ -63,7 +63,7 @@ export function process_mouse_move({ mouseMove: delta }: SFMouseMoveEvent): Mous
 		origin: prevMousePos
 	};
 
-	let target: Base = get_node_by_vector(prevMousePos);
+	let target: Base = get_node_by_vector(this.tree, prevMousePos);
 	target?.ev.emit('mouse_move', retval);
 
 	return retval;
