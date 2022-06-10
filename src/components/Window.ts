@@ -29,6 +29,7 @@ export class Window {
 	title: string;
 
 	intervals: IntervalEntry[] = [];
+	focus: Base;
 
 	constructor(size: Vector2D, title: string = "App") {
 		this.size = size;
@@ -156,6 +157,7 @@ export class Window {
 
 			if (md.target === e.target) {
 				e.target?.ev.emit('mouse_click', e);
+				this.focus = e.target;
 			}
 		}
 
