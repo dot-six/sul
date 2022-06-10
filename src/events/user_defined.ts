@@ -55,13 +55,18 @@ export function process_mouse_press({ mouseButton: event, type }: MouseButtonEve
 }
 
 export function process_mouse_move({ mouseMove: delta }: SFMouseMoveEvent): MouseMoveEvent {
-	let p = SFMouse.getPosition();
-	let prevMousePos: Vector2D = new Vector2D(p.x, p.y);
+	let last: MouseMoveEvent = this.last_events['mouse_move'] as MouseMoveEvent;
+
+	let prevMousePos: Vector2D = new Vector2D(last?.origin.x, last?.origin.y);
 
 	let retval: MouseMoveEvent = {
-		delta: new Vector2D(delta.x, delta.y),
+		delta: new Vector2D(delta.x, delta.y).sub(prevMousePos),
 		origin: prevMousePos
 	};
+
+	this.last_events['mouse_move'] = Object.assign(Object.assign({}, retval), {
+		origin: new Vector2D(delta.x, delta.y)
+	});
 
 	let target: Base = get_node_by_vector(this.tree, prevMousePos);
 	target?.ev.emit('mouse_move', retval);
