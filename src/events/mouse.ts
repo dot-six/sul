@@ -15,4 +15,5 @@ export interface MouseClickEvent {
 
 export interface MouseMoveEvent {
 	delta: Vector2D;
+	origin: Vector2D;
 };

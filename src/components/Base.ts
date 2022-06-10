@@ -31,6 +31,11 @@ export class Base {
 		return cb;
 	}
 
+	on_mouse_move(cb: Function): Function {
+		this.ev.on('mouse_move', cb as Func);
+		return cb;
+	}
+
 	on_click(cb: Function): Function {
 		this.ev.on('mouse_click', cb as Func);
 		return cb;
@@ -41,6 +46,18 @@ export class Base {
 		let a = new Vector2D(this.position.x, this.position.y);
 		let b = new Vector2D(this.position.x + this.size.x, this.position.y + this.size.y);
 		return new Region(a, b);
+	}
+
+	get_global_position(): Vector2D {
+		let pos: Vector2D = new Vector2D(this.position.x, this.position.y);
+		let parent: Base = this.parent;
+
+		while (parent) {
+			pos.add(parent.position);
+			parent = parent.parent;
+		}
+
+		return pos;
 	}
 
 	// Returns the index of the added child
