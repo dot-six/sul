@@ -1,7 +1,7 @@
 import EventEmitter from 'events'
 
 import { RenderWindow, VideoMode, Event as SFEvent } from '../../sfml-js'
-import { Clock } from '../../sfml-js'
+import { Clock, VertexArray } from '../../sfml-js'
 
 import { Vector2D } from '../modules'
 import { EventNameMap, MouseClickEvent, EventValues } from '../events'
@@ -68,8 +68,22 @@ export class Window {
 	loop() {
 		let walk = (node: Base) => {
 			let data: Drawable[] = node.render();
+
 			if (data?.length) {
 				for (const each of data) {
+					let parent: Base = node.parent;
+					// Apply position offset relative to parent's
+					let offpos = new Vector2D();
+					while (parent) {
+						offpos.add(parent.position);
+						parent = parent.parent;
+					}
+
+					if (!(each instanceof VertexArray)) {
+						(each as Exclude<Drawable, VertexArray>).move(offpos.x, offpos.y);
+					}
+
+					// Draw final result
 					this.win.draw(each);
 				}
 			}

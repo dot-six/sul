@@ -64,7 +64,7 @@ export class Base {
 		b.position = new Vector2D(this.position.x, this.position.y);
 		b.size = new Vector2D(this.size.x, this.size.y);
 		b.rotation = this.rotation;
-//		b.parent = this.parent;
+		b.parent = this.parent;
 
 		b.children = this.children.map(c => {
 			let a = c.clone();
