@@ -41,10 +41,16 @@ export class Base {
 		return cb;
 	}
 
+	on_input(cb: Function): Function {
+		this.ev.on('input', cb as Func);
+		return cb;
+	}
+
 	/* Built-in methods */
 	get_region(): Region {
-		let a = new Vector2D(this.position.x, this.position.y);
-		let b = new Vector2D(this.position.x + this.size.x, this.position.y + this.size.y);
+		let pos: Vector2D = this.get_global_position();
+		let a = new Vector2D(pos.x, pos.y);
+		let b = new Vector2D(pos.x + this.size.x, pos.y + this.size.y);
 		return new Region(a, b);
 	}
 

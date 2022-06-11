@@ -6,8 +6,9 @@ import { get_node_by_vector } from '../utils'
 import { Vector2D } from '../modules'
 import { Base } from '../components'
 
-import { MouseButton, MouseClickEvent, MouseMoveEvent } from './mouse'
 import { EventValues } from './callbacks'
+import { MouseButton, MouseClickEvent, MouseMoveEvent } from './mouse'
+import { process_input_event } from './keyboard'
 
 export function process_user_events(event: SFEvent): EventValues {
 	let retval: EventValues;
@@ -20,6 +21,9 @@ export function process_user_events(event: SFEvent): EventValues {
 			break;
 		case "MouseMoved":
 			retval = process_mouse_move.call(this, event);
+			break;
+		case "KeyReleased":
+			retval = process_input_event.call(this, event);
 			break;
 	}
 
