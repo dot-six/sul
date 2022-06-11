@@ -45,8 +45,9 @@ export function convert_keys_to_char({ key }: KeyEvent): string {
 
 	// TODO: Handle caps lock too
 	if (shift) {
-		retval = retval.toUpperCase();
+		retval = retval?.toUpperCase();
 	}
 
-	return retval;
+	// XXX: Still defaults to codeStr, not good.
+	return retval ?? codeStr;
 };
