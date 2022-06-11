@@ -155,7 +155,7 @@ export class Window {
 			let md: MouseClickEvent = this.last_events['mouse_down'] as MouseClickEvent;
 			let e: MouseClickEvent = event as MouseClickEvent;
 
-			if (md.target === e.target) {
+			if (md?.target === e?.target) {
 				e.target?.ev.emit('mouse_click', e);
 				this.focus = e.target;
 			}
