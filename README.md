@@ -1,4 +1,6 @@
 # sul (SFML UI Library - one guy, probably)
+[![Type Check](https://github.com/dot-six/sul/actions/workflows/type-check.yml/badge.svg)](https://github.com/dot-six/sul/actions/workflows/type-check.yml)
+
 GUI library and framework for Node.js
 
 ## Getting Started
