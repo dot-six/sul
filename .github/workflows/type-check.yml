@@ -1,0 +1,20 @@
+name: Type Check
+on: [pull_request, push]
+
+jobs:
+  check-type:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+          registry-url: https://registry.npmjs.org
+      - run: npm install -D
+      - run: npm install --prefix sfml-js
+      - run: npm run check
