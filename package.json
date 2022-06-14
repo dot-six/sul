@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "npx ts-node tests/all.ts",
-    "checktype": "npx tsc --noEmit",
+    "check": "npx tsc --noEmit",
     "build": "npx swc src -d dist",
     "build.declaration": "npx tsc --emitDeclarationOnly",
     "postinstall": "node postinstall.js"
