@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DotSix/sul.git"
+    "url": "git+https://github.com/dot-six/sul.git"
   },
   "keywords": [
     "SFML",
@@ -23,9 +23,9 @@
   "author": "Hanz <hanz@godot.id>",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/DotSix/sul/issues"
+    "url": "https://github.com/dot-six/sul/issues"
   },
-  "homepage": "https://github.com/DotSix/sul#readme",
+  "homepage": "https://github.com/dot-six/sul#readme",
   "dependencies": {
     "cross-spawn": "^7.0.3"
   },
