@@ -1,5 +1,11 @@
 name: Type Check
-on: [pull_request, push]
+on: 
+	pull_request:
+		paths:
+			- '**.js'
+	push:
+		paths:
+			- '**.js'
 
 jobs:
   check-type:
