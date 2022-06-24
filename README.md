@@ -1,5 +1,6 @@
 # sul (SFML UI Library - one guy, probably)
 [![Type Check](https://github.com/dot-six/sul/actions/workflows/type-check.yml/badge.svg)](https://github.com/dot-six/sul/actions/workflows/type-check.yml)
+[![Build](https://github.com/dot-six/sul/actions/workflows/build.yml/badge.svg)](https://github.com/dot-six/sul/actions/workflows/build.yml)
 
 GUI library and framework for Node.js
 
