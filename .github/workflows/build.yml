@@ -22,14 +22,10 @@ jobs:
           cache: npm
           cache-dependency-path: '**/package-lock.json'
           registry-url: https://registry.npmjs.org
-      - name: Get git short sha
-        run: |
-          FOR /F %A in ('git rev-parse --short=7 HEAD') DO echo SHAS=%~A >> $GITHUB_ENV
       - run: npm install -D
       - run: npm install --prefix sfml-js
       - run: npm run build
       - run: npm run build.declaration
-      - run: npm version --git-tag-version false --preid ${{ env.SHAS }} prerelease
       - run: npm pack
       - name: Upload npm pack artifact
         uses: actions/upload-artifact@v3
