@@ -16,12 +16,6 @@ if (process.env.GITHUB_ACTIONS) {
 
 // Identifiers
 const sfmlcloned = existsSync(path.join(dirname, 'sfml-js/', 'README.md'));
-const isnpm = existsSync(path.join(dirname, 'dist/'));
-
-if (isnpm) {
-	console.log("[i] NPM detected, aborting procedure. Perhaps your './dist/' directory has not been removed?");
-	process.exit(0);
-}
 
 // Git Submodule Init
 opts = {
@@ -58,18 +52,20 @@ cmds.push({
 });
 
 // Compiling package
-opts.cwd = dirname;
-cmds.push({
-	msg: "[*] Compiling sul",
-	cmd: ['npm', 'run', 'build'],
-	opt: Object.assign({}, opts)
-});
+if (!isnpm) {
+	opts.cwd = dirname;
+	cmds.push({
+		msg: "[*] Compiling sul",
+		cmd: ['npm', 'run', 'build'],
+		opt: Object.assign({}, opts)
+	});
 
-cmds.push({
-	msg: "[*] Compiling sul types",
-	cmd: ['npm', 'run', 'build.declaration'],
-	opt: Object.assign({}, opts)
-});
+	cmds.push({
+		msg: "[*] Compiling sul types",
+		cmd: ['npm', 'run', 'build.declaration'],
+		opt: Object.assign({}, opts)
+	});
+}
 
 // Start commands
 for (const cmd of cmds) {
