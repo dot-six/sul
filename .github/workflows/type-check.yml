@@ -1,11 +1,11 @@
 name: Type Check
 on: 
-	pull_request:
-		paths:
-			- '**.js'
-	push:
-		paths:
-			- '**.js'
+  pull_request:
+    paths:
+      - '**.js'
+  push:
+    paths:
+      - '**.js'
 
 jobs:
   check-type:
