@@ -30,7 +30,8 @@
     "cross-spawn": "^7.0.3"
   },
   "files": [
-    "/dist"
+    "/dist",
+    "/postinstall.js"
   ],
   "devDependencies": {
     "@swc/cli": "^0.1.57",
