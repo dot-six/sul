@@ -1,3 +1,4 @@
+// XXX: I still did not know what is the use of this.
 export const EventNameMap: { [derived: string]: string[] } = {
 	'MouseButtonPressed': ['mouse_down'],
 	'MouseButtonReleased': ['mouse_up', 'mouse_click'],
