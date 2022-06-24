@@ -1,0 +1,38 @@
+name: Type Check
+on: 
+	pull_request:
+		paths:
+			- '**.js'
+	push:
+		paths:
+			- '**.js'
+
+jobs:
+  check-type:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+          registry-url: https://registry.npmjs.org
+      - name: Get git short sha
+        run: |
+          FOR /F %A in ('git rev-parse --short=7 HEAD') DO echo SHAS=%~A >> $GITHUB_ENV
+      - run: npm install -D
+      - run: npm install --prefix sfml-js
+      - run: npm run build
+      - run: npm run build.declaration
+      - run: npm version --git-tag-version false --preid ${{ env.SHAS }} prerelease
+      - run: npm pack
+      - name: Upload npm pack artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: npm-pack
+          path: *.tgz
