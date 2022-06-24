@@ -2,10 +2,12 @@ name: Build
 on: 
   pull_request:
     paths:
-      - '**.js'
+      - '**.ts'
+      - '**.json'
   push:
     paths:
-      - '**.js'
+      - '**.ts'
+      - '**.json'
 
 jobs:
   check-type:
