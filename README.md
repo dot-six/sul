@@ -6,8 +6,8 @@ GUI library and framework for Node.js
 
 ## Getting Started
 ```js
-const { Rectangle, Window } = require('sul');
-const { Color, Vector2D } = require('sul');
+const { Rectangle, Window } = require('sul.js');
+const { Color, Vector2D } = require('sul.js');
 
 const WINDOW_WIDTH = 400;
 const WINDOW_HEIGHT = 400;
